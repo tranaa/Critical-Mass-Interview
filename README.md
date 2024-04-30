@@ -19,3 +19,7 @@ This is just one way you can do another way if you know how
 ### Alternative
 
 https://tranaa.github.io/Critical-Mass-Interview/
+
+### Note
+
+* On screens smaller than tablet it switches to a side nav and hides the slider
