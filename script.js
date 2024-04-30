@@ -16,12 +16,11 @@ async function fetchData() {
 function processCityData(data) {
     const { cities } = data;
     const navBarList = document.getElementById('nav-bar-list');
-    navBarList.innerHTML = "";
     cities.forEach(city => {
         const listItem = document.createElement('li');
         listItem.className = "nav-bar-list-item";
         const listItemButton = document.createElement('button');
-        listItemButton.className = city.section;
+        listItemButton.id = city.section;
         listItemButton.textContent = city.label;
         listItemButton.setAttribute('aria-label', `Select ${city.label} time`);
         listItem.appendChild(listItemButton);
@@ -64,7 +63,7 @@ function closeMenu() {
     navBar.classList.remove('nav-active');
 }
 
-// Add event listeners on load
+// Get Json and add event listeners on load
 window.onload = function() {
     fetchData();
     window.addEventListener('resize', moveSlider);
@@ -82,18 +81,21 @@ function toggleMenu() {
 
 // Clock logic
 function displayTime() {
-    const now = new Date();
-    const options = { timeZone: selectedTimeZone };
-    const formattedTime = now.toLocaleTimeString('en-US', options);
-    document.getElementById('clock').textContent = formattedTime;
-    const currentDate = new Date().toLocaleDateString('en-US', { 
-        timeZone: selectedTimeZone,
-        weekday: 'long', 
-        month: 'long', 
-        day: 'numeric',
-        year: 'numeric'
-    });
-    document.getElementById('date').textContent = currentDate;
+    const activeButton = document.querySelector('.nav-bar-list-item button.active');
+    if (activeButton) {
+        const now = new Date();
+        const options = { timeZone: selectedTimeZone };
+        const formattedTime = now.toLocaleTimeString('en-US', options);
+        document.getElementById('clock').textContent = formattedTime;
+        const currentDate = new Date().toLocaleDateString('en-US', { 
+            timeZone: selectedTimeZone,
+            weekday: 'long', 
+            month: 'long', 
+            day: 'numeric',
+            year: 'numeric'
+        });
+        document.getElementById('date').textContent = currentDate;
+    }
 }
 
 // Default user time zone
