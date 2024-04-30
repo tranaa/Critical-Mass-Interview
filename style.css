@@ -70,10 +70,6 @@ li > button.active {
     display: none;
 }
 
-/* #location {
-    display: none;
-} */
-
 #clock-section {
     display: flex;
     flex-direction: column;
