@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <div id="blur-screen"></div>
         <nav id="nav-bar">
             <ul id="nav-bar-list"></ul>
             <div id="nav-divider"></div>
@@ -17,14 +18,12 @@
             </button>
         </nav>
         <section id="clock-section" aria-label="Clock">
+            <span id="location">
+                Select a city from the menu
+            </span>
             <div id="clock" aria-live="polite"></div>
-            <div id="date-location-container">
-                <span id="location">
-                    Select a city from the menu
-                </span>
-                <span id="date">
-                </span>
-            </div>
+            <span id="date">
+            </span>
         </section>
         <script src="script.js"></script>
     </body>

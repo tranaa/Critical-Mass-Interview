@@ -58,6 +58,8 @@ function moveSlider() {
 function closeMenu() {
     const navIcon = document.getElementById('nav-icon');
     const navBar = document.getElementById('nav-bar');
+    const screen = document.getElementById('blur-screen')
+    screen.classList.remove('screen-active')
     navIcon.classList.add('fa-bars');
     navIcon.classList.remove('fa-times');
     navBar.classList.remove('nav-active');
@@ -74,9 +76,11 @@ window.onload = function() {
 function toggleMenu() {
     const navIcon = document.getElementById('nav-icon');
     const navBar = document.getElementById('nav-bar');
+    const screen = document.getElementById('blur-screen')
     navIcon.classList.toggle('fa-bars');
     navIcon.classList.toggle('fa-times');
     navBar.classList.toggle('nav-active');
+    screen.classList.toggle('screen-active')
 }
 
 // Clock logic

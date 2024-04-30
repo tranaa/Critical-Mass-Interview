@@ -20,6 +20,7 @@ button {
 	padding: 0;
 	font: inherit;
     white-space: nowrap;
+    transition: color 0.3s ease-in-out;
 }
 
 button:hover {
@@ -80,27 +81,35 @@ li > button.active {
 
 #clock {
     font-size: 3rem;
-    margin-top: 50px;
 }
 
 #location {
-    font-size: 0.75rem;
-    letter-spacing: 0.2rem;
+    margin-top: 3rem;
+    font-size: 1.25rem;
+    letter-spacing: 0.1rem;
     margin-bottom: 0.5rem;
 }
 
 #date {
+    margin-top: 0.5rem;
     font-size: 1.25rem;
-    letter-spacing: 0.2rem;
+    letter-spacing: 0.1rem;
 }
 
-#date-location-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#blur-screen {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.25);
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(3px);
 }
 
 @media screen and (max-width: 992px) {
+    #nav-bar {
+        border: none;
+    }
+
     #menu-burger {
         display: block;
         position: absolute;
@@ -126,13 +135,13 @@ li > button.active {
         margin: 0;
         position: fixed;
         right: 0%;
-        top: 65px;
         width: 40%;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: start;
         padding: 0;
+        padding-top: 65px;
         transition: all 400ms;
-        height: calc( 100% - 65px );
+        height: 100%;
         border-left: solid var(--main-color) 1px;
         transition: 0.35s ease-in-out;
     }
@@ -141,7 +150,6 @@ li > button.active {
         visibility: hidden;
         right: -100%;
     }
-    
 
     li > button {
         border-bottom: solid rgba(9, 9, 9, 0) 2px;
@@ -153,11 +161,19 @@ li > button.active {
 
     #location {
         display: flex;
-    }    
+    }
+
+    #blur-screen.screen-active {
+        display: inline-block;
+    }
 }
 
 @media only screen and (max-width: 600px) {
     #nav-bar.nav-active #nav-bar-list {
         width: 100%;
+    }
+
+    #blur-screen {
+        display: none;
     }
 }
