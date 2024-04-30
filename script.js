@@ -20,7 +20,7 @@ function triggerTextAnimation(component) {
 }
 
 // change date value
-function changeDateText() {
+function changeDateText(isAnimated = false) {
     const currentDate = new Date().toLocaleDateString('en-US', { 
         timeZone: selectedTimeZone,
         weekday: 'long', 
@@ -29,15 +29,23 @@ function changeDateText() {
         year: 'numeric'
     });
     const currDate = document.getElementById('date')
-    currDate.textContent = currentDate;
+    // only change if animated or date has changed
+    if (isAnimated || currDate.textContent != currentDate) {
+        currDate.textContent = currentDate;
+        triggerTextAnimation(currDate);
+    }
+}
+
+function changeLocationText(text) {
+    const location = document.getElementById('location');
+    location.textContent = text;
+    triggerTextAnimation(location);
 }
 
 // Process city data to create navigation buttons
 function processCityData(data) {
     const { cities } = data;
     const navBarList = document.getElementById('nav-bar-list');
-    const location = document.getElementById('location');
-    const date = document.getElementById('date');
     cities.forEach(city => {
         const listItem = document.createElement('li');
         listItem.className = "nav-bar-list-item";
@@ -52,10 +60,8 @@ function processCityData(data) {
             moveSlider();
             toggleMenu();
             changeTimeZone(city.timeZone);
-            location.textContent = city.label;
-            triggerTextAnimation(location);
-            changeDateText()
-            triggerTextAnimation(date);
+            changeLocationText(city.label);
+            changeDateText(true)
         });
     });
 }
@@ -117,6 +123,7 @@ function displayTime() {
         const formattedTime = now.toLocaleTimeString('en-US', options);
         const clock = document.getElementById('clock')
         clock.textContent = formattedTime;
+        changeDateText()
     }
 }
 
