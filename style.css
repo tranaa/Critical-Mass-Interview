@@ -124,6 +124,10 @@ li > button.active {
     #nav-slider {
         display: none;
     }
+
+    li {
+        width: 100%;
+    }
     
     #nav-bar #nav-bar-list,
     #nav-bar.nav-active #nav-bar-list {
