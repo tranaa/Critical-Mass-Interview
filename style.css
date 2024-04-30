@@ -39,14 +39,14 @@ button:hover {
 #nav-bar-list {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: row;
     padding: 0px;
     gap: 2rem;
 }
 
 li {
-    width: 100%;
+    width: fit-content;
     display: inline-block;
     text-align: center;
 }
