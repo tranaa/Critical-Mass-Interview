@@ -12,10 +12,32 @@ async function fetchData() {
     }
 }
 
+// trigger text animation
+function triggerTextAnimation(component) {
+    component.style.animation = "none";
+    void component.offsetWidth;
+    component.style.animation = null;
+}
+
+// change date value
+function changeDateText() {
+    const currentDate = new Date().toLocaleDateString('en-US', { 
+        timeZone: selectedTimeZone,
+        weekday: 'long', 
+        month: 'long', 
+        day: 'numeric',
+        year: 'numeric'
+    });
+    const currDate = document.getElementById('date')
+    currDate.textContent = currentDate;
+}
+
 // Process city data to create navigation buttons
 function processCityData(data) {
     const { cities } = data;
     const navBarList = document.getElementById('nav-bar-list');
+    const location = document.getElementById('location');
+    const date = document.getElementById('date');
     cities.forEach(city => {
         const listItem = document.createElement('li');
         listItem.className = "nav-bar-list-item";
@@ -30,7 +52,10 @@ function processCityData(data) {
             moveSlider();
             toggleMenu();
             changeTimeZone(city.timeZone);
-            document.getElementById('location').textContent = city.label;
+            location.textContent = city.label;
+            triggerTextAnimation(location);
+            changeDateText()
+            triggerTextAnimation(date);
         });
     });
 }
@@ -90,15 +115,8 @@ function displayTime() {
         const now = new Date();
         const options = { timeZone: selectedTimeZone };
         const formattedTime = now.toLocaleTimeString('en-US', options);
-        document.getElementById('clock').textContent = formattedTime;
-        const currentDate = new Date().toLocaleDateString('en-US', { 
-            timeZone: selectedTimeZone,
-            weekday: 'long', 
-            month: 'long', 
-            day: 'numeric',
-            year: 'numeric'
-        });
-        document.getElementById('date').textContent = currentDate;
+        const clock = document.getElementById('clock')
+        clock.textContent = formattedTime;
     }
 }
 

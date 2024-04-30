@@ -88,12 +88,14 @@ li > button.active {
     font-size: 1.25rem;
     letter-spacing: 0.1rem;
     margin-bottom: 0.5rem;
+    animation: fadeDown 0.5s ease-out;
 }
 
 #date {
     margin-top: 0.5rem;
     font-size: 1.25rem;
     letter-spacing: 0.1rem;
+    animation: fadeUp 0.5s ease-out;
 }
 
 #blur-screen {
@@ -179,5 +181,27 @@ li > button.active {
 
     #blur-screen {
         display: none;
+    }
+}
+
+@keyframes fadeDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
