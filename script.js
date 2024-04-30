@@ -86,6 +86,14 @@ function displayTime() {
     const options = { timeZone: selectedTimeZone };
     const formattedTime = now.toLocaleTimeString('en-US', options);
     document.getElementById('clock').textContent = formattedTime;
+    const currentDate = new Date().toLocaleDateString('en-US', { 
+        timeZone: selectedTimeZone,
+        weekday: 'long', 
+        month: 'long', 
+        day: 'numeric',
+        year: 'numeric'
+    });
+    document.getElementById('date').textContent = currentDate;
 }
 
 // Default user time zone

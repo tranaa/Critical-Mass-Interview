@@ -84,8 +84,20 @@ li > button.active {
 }
 
 #location {
-    font-size: 1rem;
+    font-size: 0.75rem;
     letter-spacing: 0.2rem;
+    margin-bottom: 0.5rem;
+}
+
+#date {
+    font-size: 1.25rem;
+    letter-spacing: 0.2rem;
+}
+
+#date-location-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 @media screen and (max-width: 992px) {
