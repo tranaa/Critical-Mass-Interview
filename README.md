@@ -16,3 +16,6 @@ This is just one way you can do another way if you know how
 
 * Run live server using button in bottom right Go Live
 
+### Alternative
+
+https://tranaa.github.io/Critical-Mass-Interview/
